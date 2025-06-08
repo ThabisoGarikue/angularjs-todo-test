@@ -11,11 +11,22 @@ angular.module('todoApp', [])
     // Function to add a new todo
     $scope.addTodo = function() {
         // TODO - Implement functionality to add a new todo
+        if ($scope.newTodo && $scope.newTodo.trim() !== '') {
+            $scope.todos.push({
+                text: $scope.newTodo.trim(),
+                completed: false
+            });
+
+            $scope.newTodo = '';
+        }
     };
     
     // Function to remove a todo by index
     $scope.removeTodo = function(index) {
         // TODO - Implement functionality to remove a todo by index
+        if (index >= 0 && index < $scope.todos.length) {
+            $scope.todos.splice(index, 1);
+        }
     };
     
     // Function to get the count of completed todos
